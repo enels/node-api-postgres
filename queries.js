@@ -74,4 +74,4 @@ const updateUsers = (request, response) => {
 };
 
 
-module.exports = {home, getUsers, getUser, createUsers}
+module.exports = {home, getUsers, getUser, createUsers, updateUsers}
