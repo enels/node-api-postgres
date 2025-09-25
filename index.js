@@ -17,9 +17,10 @@ app.use(
 // routes
 app.get('/', queries.home);
 app.get('/users', queries.getUsers);
+app.get('/users/:id', queries.getUser);
 
 
-// listening port
+// port listening 
 app.listen(port, () => {
 	
 	console.log('App running on port ${port}');
