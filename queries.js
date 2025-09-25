@@ -63,15 +63,30 @@ const updateUsers = (request, response) => {
 	const user_id = parseInt(request.params.id);
 	const {name, email} = request.body;
 
-	pool.query('UPDATE user_id SET name = $2, email = $3 WHERE id = $3', [$name, $email, $user_id], (error, results) => {
+	pool.query('UPDATE users SET name = $1, email = $2 WHERE id = $3', [name, email, user_id], (error, results) => {
 
 		if (error) {
-			throw error
+			throw error;
 		}
 		
 		response.status(201).send(`User modified with ID: ${user_id}`);
 	});
 };
 
+/* DELETE: /users/:id */
+const deleteUsers = (request, response) => {
 
-module.exports = {home, getUsers, getUser, createUsers, updateUsers}
+	const user_id = parseInt(request.params.id);
+
+	pool.query('DELETE FROM users WHERE id = $1', [user_id], (error, results) => {
+
+		if (error) {
+			throw error;
+		}
+
+		response.status(200).send(`User with ID ${user_id} DELETED!`);
+	});
+};
+
+
+module.exports = {home, getUsers, getUser, createUsers, updateUsers, deleteUsers}

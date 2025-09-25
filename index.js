@@ -21,6 +21,7 @@ app.get('/users', queries.getUsers);
 app.get('/users/:id', queries.getUser);
 app.post('/users', queries.createUsers);
 app.put('/users/:id', queries.updateUsers);
+app.delete('/users/:id', queries.deleteUsers);
 
 
 // port listening 
